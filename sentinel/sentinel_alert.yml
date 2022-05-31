@@ -1,0 +1,63 @@
+id: aaf2f367-384b-49cf-a02a-aa39e92218f4
+name: CVE-2022-30190 Detect Office Applications Spawning msdt
+description: |
+  This query detects possible abuse of ms-msdt MSProtocol URI scheme to load and execute malicious code via Microsoft Support Diagnostic Tool Vulnerability (CVE-2022-30190).
+severity: High
+requiredDataConnectors: []
+queryFrequency: 5m
+queryPeriod: 5m
+triggerOperator: gt
+triggerThreshold: 0
+tactics:
+  - Execution
+  - Persistence
+  - DefenseEvasion
+tags:
+  - Id: aaf2f367-384b-49cf-a02a-aa39e92218f4
+    version: 1.0.0
+  - Schema: ASIMProcessEvent
+    SchemaVersion: 0.1.0
+relevantTechniques:
+  - T1218
+  - T1137
+query:  |
+  imProcess
+  | where ActingProcessName has_any ("winword.exe", "excel.exe", "outlook.exe", "powerpnt.exe")
+  | where TargetProcessName contains 'msdt.exe'
+  | project-reorder 
+      TimeGenerated,
+      DvcHostname,
+      TargetProcessName,
+      TargetProcessId,
+      TargetProcessCommandLine,
+      ActingProcessName,
+      ActingProcessId,
+      ActingProcessCommandLine,
+      *
+entityMappings:
+  - entityType: Host
+    fieldMappings:
+      - identifier: FullName
+        columnName: DvcHostname
+  - entityType: Process
+    fieldMappings:
+      - identifier: CommandLine
+        columnName: TargetProcessCommandLine
+      - identifier: ProcessId
+        columnName: TargetProcessId
+  - entityType: Process
+    fieldMappings:
+      - identifier: CommandLine
+        columnName: ActingProcessCommandLine
+      - identifier: ProcessId
+        columnName: ActingProcessId
+  - entityType: File
+    fieldMappings:
+      - identifier: Name
+        columnName: TargetProcessName
+  - entityType: File
+    fieldMappings:
+      - identifier: Name
+        columnName: ActingProcessName
+version: 1.0.0
+kind: Scheduled

